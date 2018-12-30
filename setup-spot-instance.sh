@@ -36,10 +36,11 @@ cd /usr/local/src/ && \
     sudo ./configure --prefix=/usr && \
     sudo make install
 sudo apt install -y build-essential
-pip install -r requirements-prerequisite.txt
-pip install -r requirements-gpu.txt
+source ./venv/bin/activate && pip install -r requirements-pre-1.txt
+source ./venv/bin/activate && pip install -r requirements-pre-2.txt
+source ./venv/bin/activate && pip install -r requirements-cpu.txt
 
 # clone the latest tensorforce (as this script was created, the commit was 9aed7684173848b8146a7b9c73a612e3f6dca2f5)
 git clone https://github.com/lefnire/tensorforce.git
-cd tensorforce && pip install -e .
+source ./venv/bin/activate && cd tensorforce && pip install -e .
 
