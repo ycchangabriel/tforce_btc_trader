@@ -4,13 +4,13 @@
 sudo apt update
 
 # install python 3.6
-sudo add-apt-repository ppa:jonathonf/python-3.6
+sudo add-apt-repository -y ppa:jonathonf/python-3.6
 sudo apt update
-sudo apt install -y python3.6
+sudo apt install -y python3.6 python-venv
 
 # install virtualenv
 sudo apt install -y virtualenv
-virtualenv -p python3 venv
+virtualenv -p /usr/bin/python3 venv
 source ./venv/bin/activate
 
 # setup config.json
@@ -20,6 +20,14 @@ cp config.example.json config.json
 # check and install python 3.6
 # TODO
 
+# build nvtop to monitor GPU
+# sudo apt install -y cmake libncurses5-dev libncursesw5-dev
+# cd /usr/local/src && \
+#     sudo git clone https://github.com/Syllo/nvtop.git && \
+#     sudo mkdir -p nvtop/build && cd nvtop/build && \
+#     sudo cmake .. && \
+#     make && make install
+
 # install program dependencies
 cd /usr/local/src/ && \
     sudo wget http://prdownloads.sourceforge.net/ta-lib/ta-lib-0.4.0-src.tar.gz && \
@@ -28,7 +36,6 @@ cd /usr/local/src/ && \
     sudo ./configure --prefix=/usr && \
     sudo make install
 sudo apt install -y build-essential
-sudo apt install -y python3.6-dev
 pip install -r requirements-prerequisite.txt
 pip install -r requirements-gpu.txt
 
