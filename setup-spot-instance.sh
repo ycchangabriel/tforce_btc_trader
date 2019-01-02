@@ -1,12 +1,10 @@
-#!/bin/bash
-
 # this script assumes using aws ubuntu 18.04
 sudo apt update
 
 # install python 3.6
 sudo add-apt-repository -y ppa:jonathonf/python-3.6
 sudo apt update
-sudo apt install -y python3.6 python-venv
+sudo apt install -y python3.6 python3.6-dev
 
 # install virtualenv
 sudo apt install -y virtualenv
@@ -36,11 +34,15 @@ cd /usr/local/src/ && \
     sudo ./configure --prefix=/usr && \
     sudo make install
 sudo apt install -y build-essential
-source ./venv/bin/activate && pip install -r requirements-pre-1.txt
-source ./venv/bin/activate && pip install -r requirements-pre-2.txt
-source ./venv/bin/activate && pip install -r requirements-cpu.txt
+cd /home/ubuntu/tforce_btc_trader/
+echo `pwd`
+pip install -r requirements-pre-1.txt
+pip install -r requirements-pre-2.txt
+pip install -r requirements-cpu.txt
 
 # clone the latest tensorforce (as this script was created, the commit was 9aed7684173848b8146a7b9c73a612e3f6dca2f5)
 git clone https://github.com/lefnire/tensorforce.git
-source ./venv/bin/activate && cd tensorforce && pip install -e .
+cd tensorforce && pip install -e .
+
+cd /home/ubuntu/tforce_btc_trader/
 
